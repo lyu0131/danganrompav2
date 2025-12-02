@@ -1,0 +1,164 @@
+[
+  {
+    "id": "makoto-naegi",
+    "name": "Makoto Naegi",
+    "title": "Ultimate Lucky Student",
+    "quote": "I'm going to keep moving forward, with hope in my heart.",
+    "halfbody": "danganrompav1/halfbody/Makoto_Naegi_Halfbody_Sprite_01_HQ.png",
+    "profile": "danganrompav1/profile/Danganronpa_1_Character_Design_Profile_Makoto_Naegi.png",
+    "illustration": "danganrompav1/illustration/Danganronpa_1_Makoto_Naegi_Rui_Komatsuzaki_Illustration.png"
+  },
+  {
+    "id": "kyoko-kirigiri",
+    "name": "Kyoko Kirigiri",
+    "title": "Ultimate ???",
+    "quote": "Protection against deception \u2014 never let them read your emotions.",
+    "halfbody": "danganrompav1/halfbody/Kyouko_Kyoko_Kirigiri_Halfbody_Sprite_01.png",
+    "profile": "danganrompav1/profile/Danganronpa_1_Character_Design_Profile_Kyoko_Kirigiri.png",
+    "illustration": "danganrompav1/illustration/Danganronpa_1_Kyoko_Kirigiri_Rui_Komatsuzaki_Illustration.png"
+  },
+  {
+    "id": "junko-enoshima",
+    "name": "Junko Enoshima",
+    "title": "Ultimate Fashionista",
+    "quote": "Only despair's unpredictability can save you from a boring future.",
+    "halfbody": "danganrompav1/halfbody/Junko_Enoshima_Halfbody_Sprite_01.png",
+    "profile": "danganrompav1/profile/Danganronpa_1_Character_Design_Profile_Junko_Enoshima.png",
+    "illustration": "danganrompav1/illustration/Danganronpa_1_Junko_Enoshima_Rui_Komatsuzaki_Illustration.png"
+  },
+  {
+    "id": "aoi-asahina",
+    "name": "Aoi Asahina",
+    "title": "Ultimate Swimming Pro",
+    "quote": "What I really love isn't winning \u2014 it's the struggle to reach the top.",
+    "halfbody": "danganrompav1/halfbody/Aoi_Asahina_Halfbody_Sprite_01.png",
+    "profile": "danganrompav1/profile/Danganronpa_1_Character_Design_Profile_Aoi_Asahina.png",
+    "illustration": "danganrompav1/illustration/Danganronpa_1_Aoi_Asahina_Rui_Komatsuzaki_Illustration.png"
+  },
+  {
+    "id": "byakuya-togami",
+    "name": "Byakuya Togami",
+    "title": "Ultimate Affluent Progeny",
+    "quote": "I will live and I will win.",
+    "halfbody": "danganrompav1/halfbody/Byakuya_Togami_Halfbody_Sprite_01.png",
+    "profile": "danganrompav1/profile/Danganronpa_1_Character_Design_Profile_Byakuya_Togami.png",
+    "illustration": "danganrompav1/illustration/Danganronpa_1_Byakuya_Togami_Rui_Komatsuzaki_Illustration.png"
+  },
+  {
+    "id": "toko-fukawa",
+    "name": "Toko Fukawa",
+    "title": "Ultimate Writing Prodigy",
+    "quote": "The downtrodden can vividly imagine their ideal world.",
+    "halfbody": "danganrompav1/halfbody/Danganronpa_1_Toko_Touko_Fukawa_Halfbody_Sprite_01.png",
+    "profile": "danganrompav1/profile/Danganronpa_1_Character_Design_Profile_Toko_Fukawa.png",
+    "illustration": "danganrompav1/illustration/Danganronpa_1_Toko_Fukawa_Rui_Komatsuzaki_Illustration.png"
+  },
+  {
+    "id": "chihiro-fujisaki",
+    "name": "Chihiro Fujisaki",
+    "title": "Ultimate Programmer",
+    "quote": "Being weak is nothing to be ashamed of.",
+    "halfbody": "danganrompav1/halfbody/Chihiro_Fujisaki_Halfbody_Sprite_01.png",
+    "profile": "danganrompav1/profile/Danganronpa_1_Character_Design_Profile_Chihiro_Fujisaki.png",
+    "illustration": "danganrompav1/illustration/Danganronpa_1_Chihiro_Fujisaki_Rui_Komatsuzaki_Illustration.png"
+  },
+  {
+    "id": "leon-kuwata",
+    "name": "Leon Kuwata",
+    "title": "Ultimate Baseball Star",
+    "quote": "I blaze my own trail \u2014 even if I strike out.",
+    "halfbody": "danganrompav1/halfbody/Leon_Kuwata_Halfbody_Sprite_01.png",
+    "profile": "danganrompav1/profile/Danganronpa_1_Character_Design_Profile_Leon_Kuwata.png",
+    "illustration": "danganrompav1/illustration/Danganronpa_1_Leon_Kuwata_Rui_Komatsuzaki_Illustration.png"
+  },
+  {
+    "id": "mondo-owada",
+    "name": "Mondo Owada",
+    "title": "Ultimate Biker Gang Leader",
+    "quote": "A promise is a man's bond.",
+    "halfbody": "danganrompav1/halfbody/Mondo_Owada_Halfbody_Sprite_01.png",
+    "profile": "danganrompav1/profile/Danganronpa_1_Character_Design_Profile_Mondo_Owada.png",
+    "illustration": "/illustration/Danganronpa_1_Mondo_Owada_Rui_Komatsuzaki_Illustration.png"
+  },
+  {
+    "id": "kiyotaka-ishimaru",
+    "name": "Kiyotaka Ishimaru",
+    "title": "Ultimate Moral Compass",
+    "quote": "Rules exist so that we may grow through discipline!",
+    "halfbody": "danganrompav1/halfbody/Kiyotaka_Ishimaru_Halfbody_Sprite_01.png",
+    "profile": "/profile/Danganronpa_1_Character_Design_Profile_Kiyotaka_Ishimaru.png",
+    "illustration": "/illustration/Danganronpa_1_Kiyotaka_Ishimaru_Rui_Komatsuzaki_Illustration.png"
+  },
+  {
+    "id": "hifumi-yamada",
+    "name": "Hifumi Yamada",
+    "title": "Ultimate Fanfic Creator",
+    "quote": "My delusions are works of art, thank you very much.",
+    "halfbody": "danganrompav1/halfbody/Hifumi_Yamada_Halfbody_Sprite_01.png",
+    "profile": "/profile/Danganronpa_1_Character_Design_Profile_Hifumi_Yamada.png",
+    "illustration": "/illustration/Danganronpa_1_Hifumi_Yamada_Rui_Komatsuzaki_Illustration.png"
+  },
+  {
+    "id": "celestia-ludenberg",
+    "name": "Celestia Ludenberg",
+    "title": "Ultimate Gambler",
+    "quote": "Fortune favors the prepared mind.",
+    "halfbody": "danganrompav1/halfbody/Celestia_Ludenberg_Halfbody_Sprite_01.png",
+    "profile": "/profile/Danganronpa_1_Character_Design_Profile_Celestia_Ludenberg.png",
+    "illustration": "/illustration/Danganronpa_1_Celestia_Ludenberg_Rui_Komatsuzaki_Illustration.png"
+  },
+  {
+    "id": "sakura-ogami",
+    "name": "Sakura Ogami",
+    "title": "Ultimate Martial Artist",
+    "quote": "Strength is a vow you make to yourself.",
+    "halfbody": "danganrompav1/halfbody/Sakura_Ogami_Halfbody_Sprite_01.png",
+    "profile": "/profile/Danganronpa_1_Character_Design_Profile_Sakura_Ogami.png",
+    "illustration": "/illustration/Danganronpa_1_Sakura_Ogami_Rui_Komatsuzaki_Illustration.png"
+  },
+  {
+    "id": "sayaka-maizono",
+    "name": "Sayaka Maizono",
+    "title": "Ultimate Pop Sensation",
+    "quote": "I'll turn this despair into a song.",
+    "halfbody": "danganrompav1/halfbody/Sayaka_Maizono_Halfbody_Sprite_01.png",
+    "profile": "/profile/Danganronpa_1_Character_Design_Profile_Sayaka_Maizono.png",
+    "illustration": "/illustration/Danganronpa_1_Sayaka_Maizono_Rui_Komatsuzaki_Illustration.png"
+  },
+  {
+    "id": "yasuhiro-hagakure",
+    "name": "Yasuhiro Hagakure",
+    "title": "Ultimate Clairvoyant",
+    "quote": "My predictions are right\u2026 thirty percent of the time.",
+    "halfbody": "danganrompav1/halfbody/Yasuhiro_Hagakure_Halfbody_Sprite_01.png",
+    "profile": "/profile/Danganronpa_1_Character_Design_Profile_Yasuhiro_Hagakure.png",
+    "illustration": "/illustration/Danganronpa_1_Yasuhiro_Hagakure_Rui_Komatsuzaki_Illustration.png"
+  },
+  {
+    "id": "monokuma",
+    "name": "Monokuma",
+    "title": "Headmaster (?!?)",
+    "quote": "A body has been discovered!",
+    "halfbody": "danganrompav1/halfbody/Danganronpa_1_Monokuma_Halfbody_Sprite_01.png",
+    "profile": "/profile/Danganronpa_1_Character_Design_Profile_Monokuma.png",
+    "illustration": "/illustration/Danganronpa_1_Monokuma_Rui_Komatsuzaki_Illustration.png"
+  },
+  {
+    "id": "mukuro-ikusaba",
+    "name": "Mukuro Ikusaba",
+    "title": "Ultimate Soldier",
+    "quote": "Silence is the most reliable ally.",
+    "halfbody": "danganrompav1/halfbody/Mukuro_Ikusaba_Halfbody_Sprite_01.png",
+    "profile": "/profile/Danganronpa_1_Character_Design_Profile_Mukuro_Ikusaba.png",
+    "illustration": "/illustration/Danganronpa_1_Mukuro_Ikusaba_Rui_Komatsuzaki_Illustration.png"
+  },
+  {
+    "id": "genocide-jack",
+    "name": "Genocide Jack",
+    "title": "???",
+    "quote": "A masterpiece must have a signature splash!",
+    "halfbody": "halfbody/Danganronpa_1_Genocide_Jack_Halfbody_Sprite_01.png",
+    "profile": "profile/Danganronpa_1_Character_Design_Profile_Genocide_Jack.png",
+    "illustration": "illustration/Danganronpa_1_Genocide_Jack_Rui_Komatsuzaki_Illustration.png"
+  }
+]
