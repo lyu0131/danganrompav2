@@ -1,7 +1,6 @@
-// Simple playlist player for local /music folder
+// Danganronpa v1 – music.js
 (function () {
   const tracks = [
-    // Playlist generated from local /music folder
     "music/36. チャプターリザルト.mp3",
     "music/35. フェイズリザルト.mp3",
     "music/34. ラジオ体操暗殺拳.mp3",
@@ -74,15 +73,10 @@
   const trackSelect = document.getElementById('trackSelect');
   const trackTitle = document.getElementById('trackTitle');
 
-  if (!audio || !playPauseBtn || !prevBtn || !nextBtn || !trackSelect || !trackTitle) {
-    console.error('[music.js] Missing DOM elements', {audio, playPauseBtn, prevBtn, nextBtn, trackSelect, trackTitle});
-    return;
-  }
+  if (!audio || !playPauseBtn || !prevBtn || !nextBtn || !trackSelect || !trackTitle) return;
 
-  console.log('[music.js] Player initialized with', tracks.length, 'tracks');
   let current = 0;
 
-  // Check if user has manually paused the music
   function isUserPaused() {
     return localStorage.getItem('musicPaused') === 'true';
   }
@@ -92,9 +86,7 @@
   }
 
   function prettyName(path) {
-    // take filename after last '/'
     const name = path.split('/').pop();
-    // remove leading index and dot if present
     return name.replace(/^\d+\.\s*/, '');
   }
 
@@ -113,19 +105,13 @@
     if (index < 0) index = tracks.length - 1;
     if (index >= tracks.length) index = 0;
     current = index;
-    // encode URI to handle spaces/unicode
     audio.src = encodeURI(tracks[current]);
-    // ensure the element picks up the new source
     try { audio.load(); } catch (e) {}
     trackSelect.value = current;
     trackTitle.textContent = prettyName(tracks[current]);
     if (play) {
-      audio.play().then(() => {
-        console.debug('Playback started', tracks[current]);
-        setUserPaused(false);
-      }).catch((err) => {
-        console.error('Playback failed', err);
-        trackTitle.textContent = 'Playback blocked — click any control to allow';
+      audio.play().then(() => setUserPaused(false)).catch(() => {
+        trackTitle.textContent = 'Playback blocked — click Play';
       });
     }
     updatePlayBtn();
@@ -135,36 +121,25 @@
     playPauseBtn.textContent = audio.paused ? 'Play' : 'Pause';
   }
 
-  playPauseBtn.addEventListener('click', (e) => {
-    console.log('[music.js] Play/Pause button clicked', {paused: audio.paused, src: audio.src});
+  playPauseBtn.addEventListener('click', () => {
     if (audio.src === '') loadTrack(current);
     if (audio.paused) {
       audio.play().then(() => {
-        console.log('[music.js] Audio playing');
         setUserPaused(false);
         updatePlayBtn();
-      }).catch((err) => {
-        console.error('[music.js] Play() rejected on user click', err);
-        trackTitle.textContent = 'Playback blocked — allow audio in browser';
+      }).catch(() => {
+        trackTitle.textContent = 'Playback blocked — allow audio';
       });
     } else {
       audio.pause();
       setUserPaused(true);
-      console.log('[music.js] Audio paused by user');
       updatePlayBtn();
     }
   });
 
-  prevBtn.addEventListener('click', (e) => {
-    console.log('[music.js] Previous button clicked');
-    loadTrack(current - 1, true);
-  });
-
-  nextBtn.addEventListener('click', (e) => {
-    console.log('[music.js] Next button clicked');
-    loadTrack(current + 1, true);
-  });
-
+  prevBtn.addEventListener('click', () => loadTrack(current - 1, true));
+  nextBtn.addEventListener('click', () => loadTrack(current + 1, true));
+  
   trackSelect.addEventListener('change', (e) => {
     const idx = parseInt(e.target.value, 10);
     if (!Number.isNaN(idx)) loadTrack(idx, true);
@@ -172,20 +147,15 @@
 
   audio.addEventListener('play', updatePlayBtn);
   audio.addEventListener('pause', updatePlayBtn);
-  audio.addEventListener('error', (e) => {
-    console.error('Audio element error', e, audio.error);
-    trackTitle.textContent = 'Error loading track';
-  });
+  audio.addEventListener('error', () => trackTitle.textContent = 'Error loading track');
   audio.addEventListener('ended', () => loadTrack(current + 1, true));
 
-  // populate and load first track
+  // Initialize
   populate();
   
-  // Find DANGANRONPA.mp3 index (the main theme)
   const danganronpaIndex = tracks.findIndex(t => t.includes('01. DANGANRONPA.mp3') && !t.includes('DR Version'));
   const defaultIndex = danganronpaIndex !== -1 ? danganronpaIndex : tracks.length - 2;
 
-  // Restore saved track or use default
   let startIndex = defaultIndex;
   let startTime = 0;
   
@@ -200,29 +170,19 @@
     }
   } catch (e) {}
 
-  // Load the track
   loadTrack(startIndex, false);
   if (startTime > 0) audio.currentTime = startTime;
 
-  // Autoplay if user hasn't paused
   if (!isUserPaused()) {
-    audio.play().then(() => {
-      console.log('[music.js] Autoplay started');
-      updatePlayBtn();
-    }).catch((err) => {
-      console.log('[music.js] Autoplay blocked by browser', err);
+    audio.play().then(updatePlayBtn).catch(() => {
       trackTitle.textContent = 'Click Play to start music';
     });
-  } else {
-    console.log('[music.js] Autoplay skipped - user paused previously');
   }
 
-  // Save state before leaving page
   window.addEventListener('beforeunload', () => {
     try {
       localStorage.setItem('bgplayer_index', current);
       localStorage.setItem('bgplayer_time', Math.floor(audio.currentTime));
     } catch (e) {}
   });
-
 })();
