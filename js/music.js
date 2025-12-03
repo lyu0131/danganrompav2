@@ -82,6 +82,15 @@
   console.log('[music.js] Player initialized with', tracks.length, 'tracks');
   let current = 0;
 
+  // Check if user has manually paused the music
+  function isUserPaused() {
+    return localStorage.getItem('musicPaused') === 'true';
+  }
+
+  function setUserPaused(paused) {
+    localStorage.setItem('musicPaused', paused ? 'true' : 'false');
+  }
+
   function prettyName(path) {
     // take filename after last '/'
     const name = path.split('/').pop();
@@ -113,6 +122,7 @@
     if (play) {
       audio.play().then(() => {
         console.debug('Playback started', tracks[current]);
+        setUserPaused(false);
       }).catch((err) => {
         console.error('Playback failed', err);
         trackTitle.textContent = 'Playback blocked — click any control to allow';
@@ -131,6 +141,7 @@
     if (audio.paused) {
       audio.play().then(() => {
         console.log('[music.js] Audio playing');
+        setUserPaused(false);
         updatePlayBtn();
       }).catch((err) => {
         console.error('[music.js] Play() rejected on user click', err);
@@ -138,7 +149,8 @@
       });
     } else {
       audio.pause();
-      console.log('[music.js] Audio paused');
+      setUserPaused(true);
+      console.log('[music.js] Audio paused by user');
       updatePlayBtn();
     }
   });
@@ -168,26 +180,49 @@
 
   // populate and load first track
   populate();
-  // Start with DANGANRONPA(DR Version) which is the last track (index 63)
-  const drVersionIndex = tracks.length - 1;
-  loadTrack(drVersionIndex, false);
+  
+  // Find DANGANRONPA.mp3 index (the main theme)
+  const danganronpaIndex = tracks.findIndex(t => t.includes('01. DANGANRONPA.mp3') && !t.includes('DR Version'));
+  const defaultIndex = danganronpaIndex !== -1 ? danganronpaIndex : tracks.length - 2;
 
-  // optional: remember last track and time using sessionStorage
-  window.addEventListener('beforeunload', () => {
-    try {
-      sessionStorage.setItem('bgplayer_index', current);
-      sessionStorage.setItem('bgplayer_time', Math.floor(audio.currentTime));
-    } catch (e) {}
-  });
-
-  // restore
+  // Restore saved track or use default
+  let startIndex = defaultIndex;
+  let startTime = 0;
+  
   try {
-    const savedIndex = parseInt(sessionStorage.getItem('bgplayer_index'), 10);
-    const savedTime = parseInt(sessionStorage.getItem('bgplayer_time'), 10);
-    if (!Number.isNaN(savedIndex)) {
-      loadTrack(savedIndex, false);
-      if (!Number.isNaN(savedTime) && savedTime > 0) audio.currentTime = savedTime;
+    const savedIndex = parseInt(localStorage.getItem('bgplayer_index'), 10);
+    const savedTime = parseInt(localStorage.getItem('bgplayer_time'), 10);
+    if (!Number.isNaN(savedIndex) && savedIndex >= 0 && savedIndex < tracks.length) {
+      startIndex = savedIndex;
+    }
+    if (!Number.isNaN(savedTime) && savedTime > 0) {
+      startTime = savedTime;
     }
   } catch (e) {}
+
+  // Load the track
+  loadTrack(startIndex, false);
+  if (startTime > 0) audio.currentTime = startTime;
+
+  // Autoplay if user hasn't paused
+  if (!isUserPaused()) {
+    audio.play().then(() => {
+      console.log('[music.js] Autoplay started');
+      updatePlayBtn();
+    }).catch((err) => {
+      console.log('[music.js] Autoplay blocked by browser', err);
+      trackTitle.textContent = 'Click Play to start music';
+    });
+  } else {
+    console.log('[music.js] Autoplay skipped - user paused previously');
+  }
+
+  // Save state before leaving page
+  window.addEventListener('beforeunload', () => {
+    try {
+      localStorage.setItem('bgplayer_index', current);
+      localStorage.setItem('bgplayer_time', Math.floor(audio.currentTime));
+    } catch (e) {}
+  });
 
 })();

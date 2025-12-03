@@ -1,8 +1,26 @@
 // Danganronpa v1 – app.js
+// ====== Loading Tips ======
+const loadingTips = [
+  "Truth Bullets are your navigation.",
+  "Hover over the bullets to reveal them.",
+  "The music player remembers your last track.",
+  "Click character cards to learn more about them.",
+  "Hope and despair are two sides of the same coin.",
+  "A body has been discovered!",
+  "Trust no one. Suspect everyone.",
+  "The class trial will decide your fate.",
+  "Monokuma is always watching...",
+  "Find the contradictions. Expose the truth.",
+  "Your Influence is your lifeline in trials.",
+  "Upupupu~ Welcome to despair!",
+  "Only the blackened can escape... if they get away with it."
+];
+
 // ====== Loader simulation (shows only once per minute) ======
 const loader = document.getElementById('loader');
 const barFill = document.getElementById('barFill');
 const loadText = document.getElementById('loadText');
+const loadHint = document.getElementById('loadHint');
 const player = document.querySelector('.player');
 
 const LOADER_COOLDOWN = 60000; // 1 minute in milliseconds
@@ -11,6 +29,12 @@ const now = Date.now();
 const shouldShowLoader = !lastLoaderTime || (now - parseInt(lastLoaderTime, 10)) > LOADER_COOLDOWN;
 
 if (loader && barFill && loadText) {
+  // Set random tip
+  if (loadHint) {
+    const randomTip = loadingTips[Math.floor(Math.random() * loadingTips.length)];
+    loadHint.textContent = "Tip: " + randomTip;
+  }
+  
   if (shouldShowLoader) {
     // Show loader and save timestamp
     localStorage.setItem('lastLoaderTime', now.toString());

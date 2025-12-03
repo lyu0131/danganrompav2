@@ -14,7 +14,7 @@
       <img class="monokuma" src="images/Crypt_of_the_Necrodancer_Monokuma_sprite.webp" alt="Monokuma" width="120" onerror="this.style.display='none'"/>
       <h1 class="loadtitle" id="loadText">Now Loading <span class="pinkblink">Hope…</span></h1>
       <div class="bar"><i id="barFill"></i></div>
-      <div class="loadhint">Tip: Truth Bullets are your navigation.</div>
+      <div class="loadhint" id="loadHint">Tip: Truth Bullets are your navigation.</div>
     </div>
   </div>
 
@@ -58,7 +58,66 @@
   </section>
   <section id="gameplay">
     <h2 class="title">Game Play</h2>
-    <p class="subtitle">Danganronpa is a visual novel type role playing mystery solving game. Developed by Spike Chunsoft, a Japanese game development company, Danganronpa was first released on november 25th, 2010. the game quickly gained popularity and was localized to be sold in different countries. Today, the Danganronpa series now has 3 main series games, 1 spin off game, multiple small games, and 3 anime series.</p>
+    
+    <div class="gameplay-content">
+      <!-- Overview Card -->
+      <div class="gameplay-card highlight-card">
+        <h3>The Premise</h3>
+        <p>You are <strong class="pinkblink">Makoto Naegi</strong>, a student trapped in Hope's Peak Academy. To escape, you must survive a twisted game of <em>mutual killing</em> orchestrated by the sadistic bear, Monokuma. Find the truth. Expose the lies. <span class="pinkblink">Fire the bullet.</span></p>
+      </div>
+
+      <!-- Game Modes Section -->
+      <div class="gameplay-modes">
+        <div class="gameplay-card">
+          <h3>School Life</h3>
+          <p>Explore the academy in first-person, gather clues, and build relationships during <strong>Free Time</strong>. Give presents, unlock character backstories, and earn powerful Skills for trials.</p>
+        </div>
+        
+        <div class="gameplay-card">
+          <h3>Class Trial</h3>
+          <p>When a body is discovered, debate your classmates in high-stakes trials. Your <strong>Influence</strong> is your lifeline — make too many mistakes and it's game over.</p>
+        </div>
+      </div>
+
+      <!-- Trial Mechanics -->
+      <h3 class="section-header">Trial Mechanics</h3>
+      <div class="trial-mechanics">
+        <div class="mechanic-item">
+          <div>
+            <h4>Nonstop Debate</h4>
+            <p>Arm yourself with <strong class="pinkblink">Truth Bullets</strong> and shoot down lies in real-time debates. Find contradictions, silence disruptive chatter, and break the cycle.</p>
+          </div>
+        </div>
+        
+        <div class="mechanic-item">
+          <div>
+            <h4>Hangman's Gambit</h4>
+            <p><span class="pinkblink">Shoot down letters</span> to spell out crucial clues in this fast-paced puzzle minigame.</p>
+          </div>
+        </div>
+        
+        <div class="mechanic-item">
+          <div>
+            <h4>Bullet Time Battle</h4>
+            <p>Face off one-on-one in rhythm-style <span class="pinkblink">showdowns</span>. Lock onto remarks and fire to the beat!</p>
+          </div>
+        </div>
+        
+        <div class="mechanic-item">
+          <div>
+            <h4>Closing Argument</h4>
+            <p>Piece together a <span class="pinkblink">comic strip</span> depicting exactly how the crime unfolded.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bonus Mode -->
+      <div class="gameplay-card bonus-card">
+        <h3>Bonus: School Mode</h3>
+        <p>Unlocked after clearing the game! Build backup Monokumas, manage resources, and explore character relationships in this alternative dating sim-style mode.</p>
+      </div>
+    </div>
+
     <div class="gameplay_slideshow">
       <div class="mySlides fade">
         <img src="images/home_page_images/game_play_1.jpg" style="width:100%;">
@@ -75,18 +134,18 @@
 
       <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
       <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-    <br>
-    <div style="text-align:center">
-      <span class="dot" onclick="currentSlide(1)"></span>
-      <span class="dot" onclick="currentSlide(2)"></span>
-      <span class="dot" onclick="currentSlide(3)"></span>
-      <span class="dot" onclick="currentSlide(4)"></span>
+      
+      <div class="slideshow-dots">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+      </div>
     </div>
   </section>
   <section id="sns">
     <h2 class="title">SNS Hub</h2>
-    <p class="subtitle">Official links and community spaces.</p>
+    <p class="subtitle sns-subtitle">Official links and community spaces.</p>
     <div class="sns">
       <a href="https://www.danganronpa.com/" target="_blank" rel="noreferrer noopener">Official Site <span>danganronpa.com</span></a>
       <a href="https://www.reddit.com/r/danganronpa/" target="_blank" rel="noreferrer noopener">Reddit <span>r/danganronpa</span></a>
@@ -99,15 +158,14 @@
   <section id="about">
     <h2 class="title">About</h2>
     <div class="about">
-      <p>This non‑commercial fan site aims to capture the tension, humor, and theatrical chaos of <em>Trigger Happy Havoc</em> through interactive UI motifs — the Truth‑Bullet dial, a crosshair cursor with a muzzle‑flash click, and a neon‑noir palette that swings between <span class="pinkblink">hope</span> and despair.</p>
-      <p>Replace placeholder images with your assets under <code>danganrompav1/</code>: <code>images/</code> (logo, cursor), <code>halfbody/</code> (list headshots), <code>sprite/</code> (full splash/concepts), and <code>music/</code>.</p>
-      <p>Future pages:
-        <ul>
-          <li><strong>/characters/[slug]</strong> — full dossier with stats, splash art carousel, concept notes.</li>
-          <li><strong>/sns</strong> — card list already scaffolded here.</li>
-          <li><strong>/about</strong> — background & credits.</li>
-        </ul>
-      </p>
+      <p><span class="pinkblink">Hope</span> and <span class="pinkblink">despair</span> clash in bold typography and neon shadows. This fan project rebuilds <em>Trigger Happy Havoc</em> as an interactive stage, where every hover, flash, and UI snap echoes the rhythm of a <span class="pinkblink">Class Trial</span>. The site aims to capture the game's signature atmosphere — playful menace, theatrical mystery, and the relentless push toward truth.</p>
+      
+      <p>The design leans into the game's visual language:<br/>
+      the crosshair that never stops searching,<br/>
+      the <span class="pinkblink">Truth Bullets</span> loaded with contradictions,<br/>
+      and the pulsing pink-on-black world where hope fights to stay alive.</p>
+      
+      <p>Nothing here is official — only a tribute crafted with care, admiration, and obsessive attention to Danganronpa's distinctive style. This is a space to revisit the tension, the humor, and the <span class="pinkblink">unforgettable characters</span> through a modern, fan-created lens.</p>
     </div>
   </section>
 
