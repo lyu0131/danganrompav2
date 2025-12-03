@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Danganronpa: Trigger Happy Havoc — Fan Hub</title>
   <link rel="stylesheet" href="styles.css" />
-  <script src="app.js" defer></script>
+  <script src="js/app.js" defer></script>
 </head>
 <body>
   <!-- ====== LOADING OVERLAY ====== -->
@@ -18,74 +18,57 @@
     </div>
   </div>
 
+  <!-- shoot flash effect -->
+  <div class="flash" id="flash"></div>
 
   <!-- ====== TRUTH BULLET WHEEL ====== -->
   <nav class="wheel" aria-label="Truth Bullet Navigation">
     <ul>
       <li class="b-home active" data-target="#home" title="Home">Home</li>
       <li class="b-about" data-target="#about" title="About">About</li>
-      <li class="b-chars" data-target="#characters" title="Characters">Chars</li>
+      <li class="b-chars" data-href="characters.html" title="Characters">Chars</li>
       <li class="b-sns" data-target="#sns" title="SNS">SNS</li>
     </ul>
   </nav>
-  
+
   
   <!-- ====== SECTIONS ====== -->
   <section id="home" class="hero">
     <div>
+      <img src="images/home_page_images/game_title_art.jpg" alt="game title art"/>
       <h1 class="title">Danganronpa: Trigger Happy Havoc — Fan Project</h1>
       <p class="subtitle">Hope's Peak Academy gathers the brightest students in Japan — beacons of hope for the future. But when <em>Monokuma</em> locks the gates, hope curdles into theatre and blood‑stained trials. Survive the class trials. Read the truth. Fire the bullet. <br/><small style="opacity:.7">(Fan‑made site; not affiliated with Spike Chunsoft.)</small></p>
       <div class="divider"></div>
     </div>
   </section>
+  <section id="gameplay">
+    <h2 class="title">Game Play</h2>
+    <p class="subtitle">Danganronpa is a visual novel type role playing mystery solving game. Developed by Spike Chunsoft, a Japanese game development company, Danganronpa was first released on november 25th, 2010. the game quickly gained popularity and was localized to be sold in different countries. Today, the Danganronpa series now has 3 main series games, 1 spin off game, multiple small games, and 3 anime series.</p>
+    <div class="gameplay_slideshow">
+      <div class="mySlides fade">
+        <img src="images/home_page_images/game_play_1.jpg" style="width:100%;">
+      </div>
+      <div class="mySlides fade">
+        <img src="images/home_page_images/game_play_2.jpg" style="width:100%;">
+      </div>
+      <div class="mySlides fade">
+        <img src="images/home_page_images/game_play_3.jpg" style="width:100%;">
+      </div>
+      <div class="mySlides fade">
+        <img src="images/home_page_images/game_play_4.jpg" style="width:100%;">
+      </div>
 
-  <section id="characters">
-    <h2 class="title">Character List</h2>
-    <p class="subtitle">Hover to peek a line; click any card later to open a full profile page.</p>
-    <div class="grid" role="list">
-      <!-- Sample cards using placeholders; replace image src with your halfbody assets -->
-      <article class="card" role="listitem">
-        <a href="character_pages/makoto.html" target="_self">
-        <img src="images/halfbody/Makoto_hb.png" alt="Makoto Naegi" onerror="this.src='https://picsum.photos/400/260?random=1'"/>
-        </a>
-        <h3>Makoto Naegi</h3>
-        <small>Ultimate Lucky Student</small>
-        <div class="quote">“I'm going to keep moving forward, with hope in my heart.”</div>
-      </article>
-      <article class="card" role="listitem">
-        <img src="images/halfbody/Kyouko_hb.png" alt="Kyoko Kirigiri" onerror="this.src='https://picsum.photos/400/260?random=2'"/>
-        <h3>Kyoko Kirigiri</h3>
-        <small>Ultimate ???</small>
-        <div class="quote">“Protection against deception — never let them read your emotions.”</div>
-      </article>
-      <article class="card" role="listitem">
-        <img src="images/halfbody/Junko_hb.png" alt="Junko Enoshima" onerror="this.src='https://picsum.photos/400/260?random=3'"/>
-        <h3>Junko Enoshima</h3>
-        <small>Ultimate Fashionista</small>
-        <div class="quote">“Only despair's unpredictability can save you from a boring future.”</div>
-      </article>
-      <article class="card" role="listitem">
-        <img src="images/halfbody/Aoi_hb.png" alt="Aoi Asahina" onerror="this.src='https://picsum.photos/400/260?random=4'"/>
-        <h3>Aoi Asahina</h3>
-        <small>Ultimate Swimming Pro</small>
-        <div class="quote">“What I really love isn't winning — it's the struggle to reach the top.”</div>
-      </article>
-      <article class="card" role="listitem">
-        <img src="images/halfbody/Byakuya_hb.png" alt="Byakuya Togami" onerror="this.src='https://picsum.photos/400/260?random=5'"/>
-        <h3>Byakuya Togami</h3>
-        <small>Ultimate Affluent Progeny</small>
-        <div class="quote">“I will live and I will win.”</div>
-      </article>
-      <article class="card" role="listitem">
-        <img src="images/halfbody/Toko_hb.png" alt="Toko Fukawa" onerror="this.src='https://picsum.photos/400/260?random=6'"/>
-        <h3>Toko Fukawa</h3>
-        <small>Ultimate Writing Prodigy</small>
-        <div class="quote">“The downtrodden can vividly imagine their ideal world.”</div>
-      </article>
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
-    <div class="divider"></div>
+    <br>
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+      <span class="dot" onclick="currentSlide(4)"></span>
+    </div>
   </section>
-
   <section id="sns">
     <h2 class="title">SNS Hub</h2>
     <p class="subtitle">Official links and community spaces.</p>
@@ -114,5 +97,6 @@
   </section>
 
   <button class="backtop" id="backtop" aria-label="Back to top">Top</button>
+  <script src="js/music.js" defer></script>
 </body>
 </html>

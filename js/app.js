@@ -3,7 +3,12 @@
 const loader = document.getElementById('loader');
 const barFill = document.getElementById('barFill');
 const loadText = document.getElementById('loadText');
+const player = document.querySelector('.player');
+
 if (loader && barFill && loadText) {
+  // Hide player during loading
+  if (player) player.style.display = 'none';
+  
   let p = 0;
   const timer = setInterval(() => {
     p += Math.random() * 18; // choppy, chaotic load
@@ -12,7 +17,11 @@ if (loader && barFill && loadText) {
     if (p > 85) loadText.innerHTML = 'Despair Loaded!';
     if (p >= 100) {
       clearInterval(timer);
-      setTimeout(() => loader.classList.add('hidden'), 450);
+      setTimeout(() => {
+        loader.classList.add('hidden');
+        // Show player after loading completes
+        if (player) player.style.display = '';
+      }, 450);
     }
   }, 180);
 }
@@ -22,20 +31,26 @@ const bullets = document.querySelectorAll('.wheel li');
 const flash = document.getElementById('flash');
 function setActive(el){ bullets.forEach(b=>b.classList.remove('active')); el?.classList.add('active'); }
 
+console.log('[app.js] Found', bullets.length, 'truth bullets');
+
 bullets.forEach(b => {
   b.addEventListener('click', e => {
-    const target = b.getAttribute('data-target');
-    if (target) { document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' }); }
-    setActive(b);
-    // flash at cursor position
-    const x = e.clientX + 'px';
-    const y = e.clientY + 'px';
-    if (flash) {
-      flash.style.setProperty('--x', x);
-      flash.style.setProperty('--y', y);
-      flash.classList.add('show');
-      setTimeout(() => flash.classList.remove('show'), 180);
+    console.log('[app.js] Truth bullet clicked:', b.textContent, 'target:', b.getAttribute('data-target'), 'href:', b.getAttribute('data-href'));
+    
+    // Check if it's a link to another page
+    const href = b.getAttribute('data-href');
+    if (href) {
+      window.location.href = href;
+      return;
     }
+    
+    // Otherwise scroll to section on same page
+    const target = b.getAttribute('data-target');
+    if (target) { 
+      console.log('[app.js] Scrolling to', target);
+      document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' }); 
+    }
+    setActive(b);
   });
 });
 
@@ -50,11 +65,7 @@ if (backtopBtn) {
 }
 
 // Optional: set custom cursor if asset exists
-(function setCrosshairCursor(){
-  const testImg = new Image();
-  testImg.onload = () => { document.body.style.cursor = 'url("danganrompav1/images/cursor.png") 16 16, crosshair'; };
-  testImg.src = 'danganrompav1/images/cursor.png';
-})();
+// (Removed - using default crosshair cursor)
 
 // ====== Update active bullet while scrolling (IntersectionObserver) ======
 const sections = [
@@ -103,3 +114,45 @@ if (wheel) {
     }
   });
 }
+
+// ====== Gameplay Slideshow ======
+let slideIndex = 1;
+
+function showSlides(n) {
+  const slides = document.getElementsByClassName("mySlides");
+  const dots = document.getElementsByClassName("dot");
+  
+  if (slides.length === 0) return;
+  
+  if (n > slides.length) slideIndex = 1;
+  if (n < 1) slideIndex = slides.length;
+  
+  // Hide all slides
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  
+  // Remove active class from all dots
+  for (let i = 0; i < dots.length; i++) {
+    dots[i].classList.remove("active");
+  }
+  
+  // Show current slide and activate dot
+  slides[slideIndex - 1].style.display = "block";
+  if (dots[slideIndex - 1]) {
+    dots[slideIndex - 1].classList.add("active");
+  }
+}
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+// Initialize slideshow when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  showSlides(slideIndex);
+});
