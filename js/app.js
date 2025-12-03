@@ -1,29 +1,56 @@
 // Danganronpa v1 – app.js
-// ====== Loader simulation ======
+// ====== Loader simulation (shows only once per minute) ======
 const loader = document.getElementById('loader');
 const barFill = document.getElementById('barFill');
 const loadText = document.getElementById('loadText');
 const player = document.querySelector('.player');
 
+const LOADER_COOLDOWN = 60000; // 1 minute in milliseconds
+const lastLoaderTime = localStorage.getItem('lastLoaderTime');
+const now = Date.now();
+const shouldShowLoader = !lastLoaderTime || (now - parseInt(lastLoaderTime, 10)) > LOADER_COOLDOWN;
+
 if (loader && barFill && loadText) {
-  // Hide player during loading
-  if (player) player.style.display = 'none';
-  
-  let p = 0;
-  const timer = setInterval(() => {
-    p += Math.random() * 18; // choppy, chaotic load
-    if (p > 100) p = 100;
-    barFill.style.width = p + '%';
-    if (p > 85) loadText.innerHTML = 'Despair Loaded!';
-    if (p >= 100) {
-      clearInterval(timer);
-      setTimeout(() => {
-        loader.classList.add('hidden');
-        // Show player after loading completes
-        if (player) player.style.display = '';
-      }, 450);
-    }
-  }, 180);
+  if (shouldShowLoader) {
+    // Show loader and save timestamp
+    localStorage.setItem('lastLoaderTime', now.toString());
+    
+    // Auto-play Danganronpa theme during loading
+    const loaderAudio = new Audio('music/DANGANRONPA.mp3');
+    loaderAudio.volume = 0.7;
+    loaderAudio.play().catch(e => console.log('[app.js] Autoplay blocked:', e));
+    
+    // Hide player during loading
+    if (player) player.style.display = 'none';
+    
+    let p = 0;
+    const timer = setInterval(() => {
+      p += Math.random() * 18; // choppy, chaotic load
+      if (p > 100) p = 100;
+      barFill.style.width = p + '%';
+      if (p > 85) loadText.innerHTML = 'Despair Loaded!';
+      if (p >= 100) {
+        clearInterval(timer);
+        setTimeout(() => {
+          loader.classList.add('hidden');
+          // Fade out loader audio
+          const fadeOut = setInterval(() => {
+            if (loaderAudio.volume > 0.1) {
+              loaderAudio.volume -= 0.1;
+            } else {
+              loaderAudio.pause();
+              clearInterval(fadeOut);
+            }
+          }, 100);
+          // Show player after loading completes
+          if (player) player.style.display = '';
+        }, 450);
+      }
+    }, 180);
+  } else {
+    // Skip loader - hide it immediately
+    loader.classList.add('hidden');
+  }
 }
 
 // ====== Truth-bullet navigation + muzzle flash ======

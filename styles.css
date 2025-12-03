@@ -146,21 +146,43 @@ body::before {
 	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 /* Tab angles - upward-opening fan pointing right and up */
+/* All tabs start at 0 offset, expand on hover */
 .b-home {
-	transform: rotate(0deg);
+	transform: rotate(0deg) translateX(0px);
 	z-index: 4;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .b-about {
-	transform: rotate(-30deg);
+	transform: rotate(-30deg) translateX(0px);
 	z-index: 3;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .b-chars {
-	transform: rotate(-60deg);
+	transform: rotate(-60deg) translateX(0px);
 	z-index: 2;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .b-sns {
-	transform: rotate(-90deg);
+	transform: rotate(-90deg) translateX(0px);
 	z-index: 1;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+/* Hover states - extend outward and scale up */
+.b-home:hover {
+	transform: rotate(0deg) translateX(50px) scale(1.15);
+	z-index: 10;
+}
+.b-about:hover {
+	transform: rotate(-30deg) translateX(50px) scale(1.15);
+	z-index: 10;
+}
+.b-chars:hover {
+	transform: rotate(-60deg) translateX(50px) scale(1.15);
+	z-index: 10;
+}
+.b-sns:hover {
+	transform: rotate(-90deg) translateX(50px) scale(1.15);
+	z-index: 10;
 }
 .wheel li.active {
 	box-shadow: 
@@ -177,10 +199,6 @@ body::before {
 		inset 0 -1px 0 rgba(0, 0, 0, 0.1),
 		0 0 12px rgba(255, 76, 160, 0.6);
 }
-.b-home:hover { --rotation: 0deg; }
-.b-about:hover { --rotation: -30deg; }
-.b-chars:hover { --rotation: -60deg; }
-.b-sns:hover { --rotation: -90deg; }
 .flash {
 	position: fixed;
 	inset: 0;
@@ -238,8 +256,11 @@ section {
 }
 .grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-template-columns: repeat(5, 1fr);
 	gap: 22px;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
 }
 .card {
 	position: relative;

@@ -18,6 +18,21 @@
     </ul>
   </nav>
 
+  <!-- ====== MINI MUSIC PLAYER ====== -->
+  <div class="player">
+    <label>♪ BGM</label>
+    <div class="player-controls">
+      <button id="prevBtn" type="button" aria-label="Previous">◀</button>
+      <button id="playPauseBtn" type="button" aria-label="Play/Pause">Play</button>
+      <button id="nextBtn" type="button" aria-label="Next">▶</button>
+    </div>
+    <div class="player-meta">
+      <div id="trackTitle">Loading playlist…</div>
+      <select id="trackSelect" aria-label="Choose track"></select>
+    </div>
+    <audio id="bgAudio" preload="metadata"></audio>
+  </div>
+
   <!-- ====== CHARACTERS PAGE ====== -->
   <section id="characters" class="hero" style="min-height: auto; padding-top: 60px;">
     <div style="width: 100%;">
