@@ -23,6 +23,7 @@ const barFill = document.getElementById('barFill');
 const loadText = document.getElementById('loadText');
 const loadHint = document.getElementById('loadHint');
 const player = document.querySelector('.player');
+const wheel = document.querySelector('.wheel');
 
 const LOADER_COOLDOWN = 60000;
 const lastLoaderTime = localStorage.getItem('lastLoaderTime');
@@ -38,11 +39,8 @@ if (loader && barFill && loadText) {
   if (shouldShowLoader) {
     localStorage.setItem('lastLoaderTime', now.toString());
     
-    const loaderAudio = new Audio('music/DANGANRONPA.mp3');
-    loaderAudio.volume = 0.7;
-    loaderAudio.play().catch(() => {});
-    
     if (player) player.style.display = 'none';
+    if (wheel) wheel.style.display = 'none';
     
     let p = 0;
     const timer = setInterval(() => {
@@ -54,15 +52,8 @@ if (loader && barFill && loadText) {
         clearInterval(timer);
         setTimeout(() => {
           loader.classList.add('hidden');
-          const fadeOut = setInterval(() => {
-            if (loaderAudio.volume > 0.1) {
-              loaderAudio.volume -= 0.1;
-            } else {
-              loaderAudio.pause();
-              clearInterval(fadeOut);
-            }
-          }, 100);
           if (player) player.style.display = '';
+          if (wheel) wheel.style.display = '';
         }, 450);
       }
     }, 180);
@@ -96,12 +87,54 @@ bullets.forEach(b => {
   });
 });
 
-// Back to Top
-const backtopBtn = document.getElementById('backtop');
-if (backtopBtn) {
-  backtopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setActive(document.querySelector('.b-home'));
+// Draggable Music Player
+const playerEl = document.querySelector('.player');
+if (playerEl) {
+  let isDragging = false;
+  let offsetX, offsetY;
+  
+  // Restore saved position
+  const savedX = localStorage.getItem('playerX');
+  const savedY = localStorage.getItem('playerY');
+  if (savedX && savedY) {
+    playerEl.style.right = 'auto';
+    playerEl.style.bottom = 'auto';
+    playerEl.style.left = savedX + 'px';
+    playerEl.style.top = savedY + 'px';
+  }
+  
+  playerEl.addEventListener('mousedown', (e) => {
+    if (e.target.tagName === 'BUTTON' || e.target.tagName === 'SELECT') return;
+    isDragging = true;
+    playerEl.classList.add('dragging');
+    offsetX = e.clientX - playerEl.getBoundingClientRect().left;
+    offsetY = e.clientY - playerEl.getBoundingClientRect().top;
+  });
+  
+  document.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    let newX = e.clientX - offsetX;
+    let newY = e.clientY - offsetY;
+    
+    // Keep within viewport
+    newX = Math.max(0, Math.min(newX, window.innerWidth - playerEl.offsetWidth));
+    newY = Math.max(0, Math.min(newY, window.innerHeight - playerEl.offsetHeight));
+    
+    playerEl.style.right = 'auto';
+    playerEl.style.bottom = 'auto';
+    playerEl.style.left = newX + 'px';
+    playerEl.style.top = newY + 'px';
+  });
+  
+  document.addEventListener('mouseup', () => {
+    if (isDragging) {
+      isDragging = false;
+      playerEl.classList.remove('dragging');
+      // Save position
+      localStorage.setItem('playerX', playerEl.offsetLeft);
+      localStorage.setItem('playerY', playerEl.offsetTop);
+    }
   });
 }
 

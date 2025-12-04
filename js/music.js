@@ -158,31 +158,44 @@
 
   let startIndex = defaultIndex;
   let startTime = 0;
+  let wasPlaying = false;
   
   try {
     const savedIndex = parseInt(localStorage.getItem('bgplayer_index'), 10);
     const savedTime = parseInt(localStorage.getItem('bgplayer_time'), 10);
+    const savedPlaying = localStorage.getItem('musicWasPlaying') === 'true';
     if (!Number.isNaN(savedIndex) && savedIndex >= 0 && savedIndex < tracks.length) {
       startIndex = savedIndex;
     }
     if (!Number.isNaN(savedTime) && savedTime > 0) {
       startTime = savedTime;
     }
+    wasPlaying = savedPlaying;
   } catch (e) {}
 
   loadTrack(startIndex, false);
-  if (startTime > 0) audio.currentTime = startTime;
+  
+  // Restore time and playback state after audio is ready
+  function restorePlayback() {
+    if (startTime > 0) audio.currentTime = startTime;
+    if (wasPlaying && !isUserPaused()) {
+      audio.play().then(updatePlayBtn).catch(() => {
+        trackTitle.textContent = 'Click Play to start music';
+      });
+    }
+  }
 
-  if (!isUserPaused()) {
-    audio.play().then(updatePlayBtn).catch(() => {
-      trackTitle.textContent = 'Click Play to start music';
-    });
+  if (audio.readyState >= 1) {
+    restorePlayback();
+  } else {
+    audio.addEventListener('loadedmetadata', restorePlayback, { once: true });
   }
 
   window.addEventListener('beforeunload', () => {
     try {
       localStorage.setItem('bgplayer_index', current);
       localStorage.setItem('bgplayer_time', Math.floor(audio.currentTime));
+      localStorage.setItem('musicWasPlaying', !audio.paused ? 'true' : 'false');
     } catch (e) {}
   });
 })();
