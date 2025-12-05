@@ -47,7 +47,7 @@ if (loader && barFill && loadText) {
       p += Math.random() * 18;
       if (p > 100) p = 100;
       barFill.style.width = p + '%';
-      if (p > 85) loadText.innerHTML = 'Despair Loaded!';
+      if (p > 85) loadText.innerHTML = 'Now Loading <span class="pinkblink" style="font-size: 1.5em;">Despair…</span>';
       if (p >= 100) {
         clearInterval(timer);
         setTimeout(() => {
@@ -195,6 +195,40 @@ function currentSlide(n) {
 }
 
 document.addEventListener('DOMContentLoaded', () => showSlides(slideIndex));
+
+// Hero Background Slideshow
+let heroSlideTimer;
+let heroCurrentSlide = 0;
+
+function setHeroSlide(index) {
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  if (slides.length === 0) return;
+  
+  slides[heroCurrentSlide].classList.remove('active');
+  dots[heroCurrentSlide]?.classList.remove('active');
+  
+  heroCurrentSlide = index;
+  
+  slides[heroCurrentSlide].classList.add('active');
+  dots[heroCurrentSlide]?.classList.add('active');
+  
+  // Reset timer
+  clearInterval(heroSlideTimer);
+  heroSlideTimer = setInterval(nextHeroSlide, 8000);
+}
+
+function nextHeroSlide() {
+  const slides = document.querySelectorAll('.hero-slide');
+  const next = (heroCurrentSlide + 1) % slides.length;
+  setHeroSlide(next);
+}
+
+(function() {
+  const slides = document.querySelectorAll('.hero-slide');
+  if (slides.length === 0) return;
+  heroSlideTimer = setInterval(nextHeroSlide, 8000);
+})();
 
 // Glass Shatter Click Effect
 (function() {
