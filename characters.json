@@ -144,15 +144,6 @@
     "illustration": "/illustration/Danganronpa_1_Monokuma_Rui_Komatsuzaki_Illustration.png"
   },
   {
-    "id": "mukuro-ikusaba",
-    "name": "Mukuro Ikusaba",
-    "title": "Ultimate Soldier",
-    "quote": "Silence is the most reliable ally.",
-    "halfbody": "danganrompav1/halfbody/Mukuro_Ikusaba_Halfbody_Sprite_01.png",
-    "profile": "/profile/Danganronpa_1_Character_Design_Profile_Mukuro_Ikusaba.png",
-    "illustration": "/illustration/Danganronpa_1_Mukuro_Ikusaba_Rui_Komatsuzaki_Illustration.png"
-  },
-  {
     "id": "genocide-jack",
     "name": "Genocide Jack",
     "title": "???",

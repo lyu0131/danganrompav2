@@ -1,25 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Makoto Naegi - Character Introduction</title>
 		<link rel="stylesheet" href="makoto_styles.css" />
-		<titel>Makoto Naegi - Character Introduction</titel>
+		<script src="../js/app.js" defer></script>
 	</head>
 	<body>
-		<header>
-			<h1 class="title">Makoto Naegi</h1>
-			<p>The Ultimate Lucky Student</p>
-		</header>
-		<section class="profile"></section>
-		<img src="../images/halfbody/Makoto_hb.png" alt="Makoto_hb" />
-		<div class="report_card">
-			
+		<!-- ====== TRUTH BULLET WHEEL ====== -->
+		<nav class="wheel" aria-label="Truth Bullet Navigation">
+			<ul>
+				<li class="b-about" data-href="../index.html#about" title="About">About</li>
+				<li class="b-sns" data-href="../index.html#sns" title="SNS">SNS</li>
+				<li class="b-gameplay" data-href="../index.html#gameplay" title="Gameplay">Gameplay</li>
+				<li class="b-home" data-href="../index.html" title="Home">Home</li>
+			</ul>
+		</nav>
+
+		<!-- ====== MINI MUSIC PLAYER ====== -->
+		<div class="player">
+			<label>♪ BGM</label>
+			<div class="player-controls">
+				<button id="prevBtn" type="button" aria-label="Previous">◀</button>
+				<button id="playPauseBtn" type="button" aria-label="Play/Pause">Play</button>
+				<button id="nextBtn" type="button" aria-label="Next">▶</button>
+			</div>
+			<div class="player-meta">
+				<div id="trackTitle">Loading playlist…</div>
+				<select id="trackSelect" aria-label="Choose track"></select>
+			</div>
+			<audio id="bgAudio" preload="metadata"></audio>
+			<a href="../characters.html" class="back-btn">← Back to Characters</a>
 		</div>
+
+		<header>
+			<h1 class="title">Makoto Naegi <span class="japanese">(苗木誠)</span></h1>
+			<p class="ultimate">Ultimate Lucky Student</p>
+			<p class="quote">"I'm going to keep moving forward, with hope in my heart."</p>
+		</header>
+
+		<div class="profile-container">
+			<div class="profile-visual">
+				<img src="../images/halfbody/Makoto_hb.png" alt="Makoto Naegi halfbody" class="halfbody" />
+			</div>
+
+			<div class="profile-info">
+				<div class="info-grid">
+					<div class="info-item">
+						<label>Gender</label>
+						<p>Male</p>
+					</div>
+					<div class="info-item">
+						<label>Height</label>
+						<p>160 cm</p>
+					</div>
+					<div class="info-item">
+						<label>Weight</label>
+						<p>52 kg</p>
+					</div>
+					<div class="info-item">
+						<label>Birth Date</label>
+						<p>February 5</p>
+					</div>
+					<div class="info-item">
+						<label>Blood Type</label>
+						<p>A</p>
+					</div>
+				</div>
+
+				<div class="preferences">
+					<div class="pref-section">
+						<h3>Likes</h3>
+						<p>Curry, Trendy Things</p>
+					</div>
+					<div class="pref-section">
+						<h3>Dislikes</h3>
+						<p>Dried mackerel, Dried bean curd</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<section class="character-concept">
+			<h2>Character Concept</h2>
+			<p>From the planning stages it was decided that Makoto should not have much individuality, which made him difficult for character designer Rui Komatsuzaki to design compared to the other characters whose designs were more unique and distinct. Because the game was initially planned to be played from a third-person perspective from behind Makoto, he was designed wearing a hoodie with a distinctive decal on the hood to give players something to look at. His ahoge was added to give his hair some character, and he was deliberately made shorter than the other male characters in order to give him a 'herbivore man'-type image. His color scheme, though plain, were chosen because they were colors that Komatsuzaki particularly liked.</p>
 		</section>
 
 		<section class="character_art">
-			<img src="../images/splash_art/Makoto_sa.png" alt="Makoto splash art"/>
+			<div class="splash-container">
+				<img src="../images/splash_art/Makoto_Naegi_sa.png" alt="Makoto splash art" class="splash-image" />
+			</div>
 		</section>
 
-		<a href="../index.html" target="_self">back to home page</a>
+		<a href="../characters.html" class="back-link">← Back to Characters</a>
+		<script src="../js/music.js" defer></script>
 	</body>
 </html>
