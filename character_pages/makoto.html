@@ -5,7 +5,76 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Makoto Naegi - Character Introduction</title>
 		<link rel="stylesheet" href="makoto_styles.css" />
-		<script src="../js/app.js" defer></script>
+		<script defer>
+			document.addEventListener('DOMContentLoaded', () => {
+				const modal = document.getElementById('imageModal');
+				const modalImage = document.getElementById('modalImage');
+				const closeBtn = document.querySelector('.modal-close');
+				const enlargeableImages = document.querySelectorAll('[data-enlargeable]');
+
+				enlargeableImages.forEach(img => {
+					img.addEventListener('click', () => {
+						modalImage.src = img.src;
+						modal.classList.add('active');
+						document.body.style.overflow = 'hidden';
+					});
+				});
+
+				closeBtn.addEventListener('click', () => {
+					modal.classList.remove('active');
+					document.body.style.overflow = '';
+				});
+
+				modal.addEventListener('click', (e) => {
+					if (e.target === modal) {
+						modal.classList.remove('active');
+						document.body.style.overflow = '';
+					}
+				});
+
+				document.addEventListener('keydown', (e) => {
+					if (e.key === 'Escape' && modal.classList.contains('active')) {
+						modal.classList.remove('active');
+						document.body.style.overflow = '';
+					}
+				});
+
+				// Image Switcher
+				const switcher = document.querySelectorAll('.switcher-btn');
+				const switcherImage = document.getElementById('switcherImage');
+
+				const images = {
+					halfbody: '../images/halfbody/Makoto_hb.png',
+					splash: '../images/splash_art/Makoto_Naegi_sa.png'
+				};
+
+				switcher.forEach(btn => {
+					btn.addEventListener('click', () => {
+						const imageType = btn.getAttribute('data-image');
+						switcherImage.src = images[imageType];
+						switcherImage.style.opacity = '0';
+						setTimeout(() => {
+							switcherImage.style.opacity = '1';
+						}, 10);
+
+						switcher.forEach(b => b.classList.remove('active'));
+						btn.classList.add('active');
+					});
+				});
+
+				// Truth Bullet Wheel Navigation
+				const bullets = document.querySelectorAll('.wheel li');
+				
+				bullets.forEach(b => {
+					b.addEventListener('click', () => {
+						const href = b.getAttribute('data-href');
+						if (href) {
+							window.location.href = href;
+						}
+					});
+				});
+			});
+		</script>
 	</head>
 	<body>
 		<!-- ====== TRUTH BULLET WHEEL ====== -->
@@ -40,9 +109,18 @@
 			<p class="quote">"I'm going to keep moving forward, with hope in my heart."</p>
 		</header>
 
+		<div class="switcher-buttons-wrapper">
+			<div class="switcher-buttons">
+				<button class="switcher-btn active" data-image="splash">Splash Art</button>
+				<button class="switcher-btn" data-image="halfbody">Halfbody</button>
+			</div>
+		</div>
+
 		<div class="profile-container">
 			<div class="profile-visual">
-				<img src="../images/halfbody/Makoto_hb.png" alt="Makoto Naegi halfbody" class="halfbody" />
+				<div class="image-switcher">
+					<img id="switcherImage" src="../images/splash_art/Makoto_Naegi_sa.png" alt="Makoto Naegi" class="switcher-image" data-enlargeable />
+				</div>
 			</div>
 
 			<div class="profile-info">
@@ -83,17 +161,21 @@
 		</div>
 
 		<section class="character-concept">
-			<h2>Character Concept</h2>
-			<p>From the planning stages it was decided that Makoto should not have much individuality, which made him difficult for character designer Rui Komatsuzaki to design compared to the other characters whose designs were more unique and distinct. Because the game was initially planned to be played from a third-person perspective from behind Makoto, he was designed wearing a hoodie with a distinctive decal on the hood to give players something to look at. His ahoge was added to give his hair some character, and he was deliberately made shorter than the other male characters in order to give him a 'herbivore man'-type image. His color scheme, though plain, were chosen because they were colors that Komatsuzaki particularly liked.</p>
-		</section>
-
-		<section class="character_art">
-			<div class="splash-container">
-				<img src="../images/splash_art/Makoto_Naegi_sa.png" alt="Makoto splash art" class="splash-image" />
+			<div class="concept-content">
+				<div class="concept-text">
+					<h2>Character Concept</h2>
+					<p>From the planning stages it was decided that Makoto should not have much individuality, which made him difficult for character designer Rui Komatsuzaki to design compared to the other characters whose designs were more unique and distinct. Because the game was initially planned to be played from a third-person perspective from behind Makoto, he was designed wearing a hoodie with a distinctive decal on the hood to give players something to look at. His ahoge was added to give his hair some character, and he was deliberately made shorter than the other male characters in order to give him a 'herbivore man'-type image. His color scheme, though plain, were chosen because they were colors that Komatsuzaki particularly liked.</p>
+				</div>
+				<img src="../images/concept/Makoto_Naegi_concept.png" alt="Makoto concept art" class="concept-image" data-enlargeable />
 			</div>
 		</section>
 
-		<a href="../characters.html" class="back-link">← Back to Characters</a>
-		<script src="../js/music.js" defer></script>
+		<!-- ====== IMAGE MODAL ====== -->
+		<div id="imageModal" class="image-modal">
+			<span class="modal-close">&times;</span>
+			<img id="modalImage" src="" alt="Enlarged image" class="modal-image" />
+		</div>
+
+		<script src="../js/music-character.js" defer></script>
 	</body>
 </html>
