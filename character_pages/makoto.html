@@ -43,12 +43,10 @@
 				const switcher = document.querySelectorAll('.switcher-btn');
 				const switcherImage = document.getElementById('switcherImage');
 
-			const images = {
-				halfbody: '../images/halfbody/Makoto_Naegi_hb.png',
-				splash: '../images/splash_art/Makoto_Naegi_sa.png'
-			};
-
-			switcher.forEach(btn => {
+		const images = {
+			halfbody: '../images/halfbody/Makoto_hb.png',
+			splash: '../images/splash_art/Makoto_Naegi_sa.png'
+		};			switcher.forEach(btn => {
 					btn.addEventListener('click', () => {
 						const imageType = btn.getAttribute('data-image');
 						switcherImage.src = images[imageType];

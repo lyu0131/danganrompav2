@@ -267,9 +267,9 @@ section::before {
 	inset: 0;
 	background: linear-gradient(
 		180deg,
-		rgba(0, 0, 0, 0.75),
+		rgba(0, 0, 0, 0.95),
 		rgba(11, 11, 15, 0.7) 50%,
-		rgba(11, 11, 15, 0.9) 85%,
+		rgba(11, 11, 15, 0.95) 80%,
 		rgba(11, 11, 15, 1) 100%
 	);
 	pointer-events: none;

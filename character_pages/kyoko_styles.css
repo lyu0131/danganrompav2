@@ -707,6 +707,10 @@ header {
 	font-size: 1.1rem;
 }
 
+.concept-text p + p {
+	margin-top: 40px;
+}
+
 .concept-image {
 	max-width: 100%;
 	height: auto;

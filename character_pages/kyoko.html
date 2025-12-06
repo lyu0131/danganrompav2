@@ -43,10 +43,12 @@
 				const switcher = document.querySelectorAll('.switcher-btn');
 				const switcherImage = document.getElementById('switcherImage');
 
-			const images = {
-				halfbody: '../images/halfbody/Kyouko_hb.png',
-				splash: '../images/splash_art/Kyoko_Kirigiri_sa.png'
-			};				switcher.forEach(btn => {
+		const images = {
+			halfbody: '../images/halfbody/Kyouko_hb.png',
+			splash: '../images/splash_art/Kyoko_Kirigiri_sa.png'
+		};
+
+		switcher.forEach(btn => {
 					btn.addEventListener('click', () => {
 						const imageType = btn.getAttribute('data-image');
 						switcherImage.src = images[imageType];
@@ -162,8 +164,9 @@
 			<div class="concept-content">
 			<div class="concept-text">
 				<h2>Character Concept</h2>
-				<p>Character designer Rui Komatsuzaki has stated that Kyoko was one the most difficult female character to create in Danganronpa: Trigger Happy Havoc. It was decided by the team that she would have the image of a mysterious girl, so she was originally planned to have a toneless, monotone color scheme, but that needed to be altered after the game's direction changed to the Psycho Pop art-style and so her color scheme was changed to a pastel purple. Her early design prominently featured a school uniform with overalls because Komatsuzaki wanted it to have a rarer design than the other female characters, but this was later changed to a simple blouse and skirt. Her gloves were always a part of her design from the planning stages to give her the air of a detective, so her double-breasted jacket was added to compliment the detective look.</p>
-				<p>Komatsusaki had difficulties deciding which hairstyle to chose for Kyoko and was torn between a shorter style or a longer one. It was suggested by producer Yoshinori Terasawa that Kyoko could have a symbolic hair cutting scene in the first game, but the idea was ultimately rejected and so Kyoko's hair remained long. Because Kyoko is the replacement deuteragonist after Sayaka Maizono's death, Komatsuzaki wanted Kyoko's design to closely parallel Sayaka's and their similar hairstyles in different shades was a deliberate choice.</p>
+				<p>Character designer Rui Komatsuzaki has stated that Kyoko was one the most difficult female character to create in Danganronpa: Trigger Happy Havoc. It was decided by the team that she would have the image of a mysterious girl, so she was originally planned to have a <span class="pinkblink">toneless, monotone color scheme</span>, but that needed to be altered after the game's direction changed to the Psycho Pop art-style and so her color scheme was changed to a <span class="pinkblink">pastel purple</span>. Her early design prominently featured a school uniform with overalls because Komatsuzaki wanted it to have a rarer design than the other female characters, but this was later changed to a simple blouse and skirt. Her gloves were always a part of her design from the planning stages to give her the air of a detective, so her double-breasted jacket was added to compliment the detective look.</p>
+				
+				<p>Komatsusaki had difficulties deciding which hairstyle to chose for Kyoko and was torn between a shorter style or a longer one. It was suggested by producer Yoshinori Terasawa that Kyoko could have a symbolic hair cutting scene in the first game, but the idea was ultimately rejected and so Kyoko's hair remained long. Because Kyoko is the replacement <span class="pinkblink">deuteragonist</span> after Sayaka Maizono's death, Komatsuzaki wanted Kyoko's design to closely parallel Sayaka's and their similar hairstyles in different shades was a deliberate choice.</p>
 			</div>
 				<img src="../images/concept/Kyoko_Kirigiri_concept.png" alt="Kyoko concept art" class="concept-image" data-enlargeable />
 			</div>
